@@ -7,12 +7,20 @@ export default class App extends Component {
         super();
 
         this.state = {
-          todos: []
+            todos: []
         };
     }
 
     componentDidMount() {
-        this.setState({todos: ['hi', 'p']});
+        axios.get('http://127.0.0.1:8004/items')
+            .then(response => {
+                this.setState({
+                    todos: response.data
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
     addItem() {
@@ -31,8 +39,7 @@ export default class App extends Component {
                 <hr/>
 
                 <Lists
-                todos={this.state.todos}
-                removeItem={this.removeItem()}
+                    todos={this.state.todos}
                 />
             </div>
         );

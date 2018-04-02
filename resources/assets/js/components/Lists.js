@@ -1,16 +1,23 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import axios from "axios";
 
-export default class Lists extends Component {
+class Lists extends Component {
+
+
     render() {
-        return(
+        return (
             <ul className="list-group">
-                <a href="#" className="list-group-item">
-                    Cras justo odio
-                    <span className="close" data-dismiss="alert" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></span>
-                </a>
+                {this.props.todos.map((todo) =>
+                    <a href="#" key={todo.id} className="list-group-item">
+                        {todo.content}
+                        <span className="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></span>
+                    </a>
+                )}
             </ul>
         );
     }
 }
+
+export default Lists;
