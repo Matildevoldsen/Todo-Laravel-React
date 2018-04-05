@@ -24,4 +24,12 @@ class Todo extends Controller
         $todo->save();
         return response()->json('Added');
     }
+
+    public function destroy($id)
+    {
+        $item = \App\Todo::find($id);
+        $item->delete();
+
+        return response()->json('Successfully Deleted');
+    }
 }

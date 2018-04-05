@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('items', 'Todo');
+Route::delete('items/destroy/{id}', 'Todo@destroy');
+Route::post('items/store/', 'Todo@store');
